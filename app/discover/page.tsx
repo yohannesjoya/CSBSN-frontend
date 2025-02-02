@@ -1,4 +1,5 @@
 import { BusinessOverviewCard } from "@/components/businesses/business-card";
+import DiscoverBusinessCardsList from "@/components/businesses/discover-business-cards";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -93,19 +94,7 @@ export default async function DiscoverPage({
         </Select>
         <Button type="submit">Apply Filters</Button>
       </form>
-
-      {/* Company Grid */}
-      <div className="relative max-h-[88dvh] overflow-y-hidden grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filteredCompanies.map((company: BusinessCardProps) => (
-          <BusinessOverviewCard key={company.businessId} {...company} />
-        ))}
-
-        <div className="absolute w-full h-32 bottom-0 left-0 bg-gradient-to-t from-white/90 to-white/10 flex justify-center items-end">
-          <Button variant={"outline"} className="px-16">
-            View More
-          </Button>
-        </div>
-      </div>
+      <DiscoverBusinessCardsList filteredCompanies={filteredCompanies} />
     </div>
   );
 }
