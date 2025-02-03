@@ -41,12 +41,14 @@ const cities = [
   { label: "Assosa", value: "assosa" },
 ];
 
-export default async function DiscoverPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
-  const { category = "all", city = "any" } = await searchParams;
+type SearchParams = { [key: string]: string | string[] | undefined };
+
+type Props = {
+  searchParams: SearchParams; // searchParams might be optional
+};
+
+export default async function DiscoverPage({ searchParams }: Props) {
+  const { category = "all", city = "any" } = searchParams;
 
   const res = await fetch("http://localhost:3000/api/business");
   const { data: companies } = await res.json();

@@ -1,9 +1,7 @@
 import { dummy_businesses } from "@/data/dummy_data";
-import { auth } from "auth";
-import type { NextApiRequest, NextApiResponse } from "next";
 
 export async function GET(
-  req: NextApiRequest,
+  req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const id = (await params).id;
